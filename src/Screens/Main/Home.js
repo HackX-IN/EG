@@ -9,6 +9,16 @@ const Home = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View>
+        <Text
+          style={{
+            fontSize: hp(4.5),
+            fontWeight: '900',
+            color: '#000',
+            bottom: hp(3),
+          }}>
+          Select Mode
+        </Text>
+
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Classic')}>
@@ -18,7 +28,7 @@ const Home = ({navigation}) => {
           <Text style={{fontSize: hp(2.9), fontWeight: '800'}}>TDM</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.top}>
+      {/* <View style={styles.top}>
         <Text style={{fontSize: hp(2.3), fontWeight: '200', color: '#fff'}}>
           Hey Sumit , Select your
         </Text>
@@ -32,7 +42,7 @@ const Home = ({navigation}) => {
           Favourite{' '}
           <Text style={{color: 'green', fontSize: hp(3.5)}}>Game</Text>
         </Text>
-      </View>
+      </View> */}
     </View>
   );
 };

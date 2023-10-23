@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
@@ -154,38 +154,64 @@ const Classic = ({navigation}) => {
       ),
     });
   });
+  const [selected, setSelected] = useState('upcoming'); // Set an initial value, e.g., 'upcoming' for the default selection
+
+  const toggleSelected = identifier => {
+    setSelected(identifier);
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.wrapper}>
-        <View
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+
+          paddingVertical: heightPercentageToDP(1),
+          paddingHorizontal: heightPercentageToDP(1.5),
+        }}>
+        <TouchableOpacity
+          onPress={() => toggleSelected('upcoming')}
           style={{
-            flexDirection: 'row',
+            backgroundColor: selected === 'upcoming' ? '#B15F5D' : 'gray',
+
+            padding: 5,
+            justifyContent: 'center',
             alignItems: 'center',
-            gap: heightPercentageToDP(1.5),
-            marginBottom: heightPercentageToDP(1.5),
+            width: widthPercentageToDP(48),
           }}>
           <Text
             style={{
-              fontSize: heightPercentageToDP(1.6),
-              color: '#E3BDA6',
-              fontWeight: '600',
-              marginRight: heightPercentageToDP(1),
+              color: 'white',
+              fontWeight: '800',
+              fontSize: heightPercentageToDP(2),
             }}>
-            ☐ BATTLE ROYALE
+            UPCOMING MATCH
           </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => toggleSelected('complete')}
+          style={{
+            backgroundColor: selected === 'complete' ? '#B15F5D' : 'gray',
+
+            padding: 5,
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: widthPercentageToDP(46),
+          }}>
           <Text
             style={{
-              fontSize: heightPercentageToDP(1.6),
-              color: '#51AB95',
-              fontWeight: '600',
+              color: 'white',
+              fontWeight: '800',
+              fontSize: heightPercentageToDP(2),
             }}>
-            ☐ BRACKET
+            COMPLETE MATCH
           </Text>
-        </View>
+        </TouchableOpacity>
       </View>
+
       <FlatList
         data={Data}
-        numColumns={2}
         renderItem={({item, index}) => (
           <DataCard
             item={item}
@@ -212,9 +238,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  wrapper: {
-    paddingHorizontal: heightPercentageToDP(3),
-    paddingVertical: heightPercentageToDP(2),
   },
 });

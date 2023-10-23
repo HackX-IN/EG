@@ -39,7 +39,7 @@ function MyTabs() {
             elevation: 0,
           },
           tabBarShowLabel: false,
-          tabBarActiveTintColor: '#225B44',
+          tabBarActiveTintColor: 'red',
         }}>
         <Tab.Screen
           name="Home"
@@ -58,11 +58,15 @@ function MyTabs() {
               />
             ),
             headerBackVisible: false,
-            headerTitleStyle: {color: 'red', fontSize: heightPercentageToDP(2)},
+            headerTitleStyle: {
+              color: 'white',
+              fontSize: heightPercentageToDP(2.2),
+              fontStyle: 'italic',
+            },
             headerShadowVisible: false,
             headerShown: true,
             headerStyle: {backgroundColor: '#111829'},
-            headerTitle: 'ELIMINATION GAMERZ',
+            headerTitle: 'ELIMINATION',
 
             headerLeft: () => (
               <TouchableOpacity
